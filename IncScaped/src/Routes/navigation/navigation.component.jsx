@@ -10,7 +10,7 @@ export default function Navigation() {
                 <CrwnLogo className='logo'/>
             </Link>
             <div className='nav-links-container'>
-                <Link className='nav-link' to="/write">RAKSĪT</Link>
+                <Link className='nav-link' to="/write">RAKSTĪT</Link>
                 {false?(
                   <span className='nav-link' onClick={()=>{}}>SIGN OUT</span>
                 ):(<Link className='nav-link' to="/auth">SIGN IN</Link>
