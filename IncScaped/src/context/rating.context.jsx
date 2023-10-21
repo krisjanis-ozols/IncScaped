@@ -3,30 +3,30 @@ import { createContext, useState } from "react";
 const TempRatings = [
     {
         id: "1",
-        storie_ID: "4",
+        storie_id: "1",
         lietotajs: "1",
         rating: "4",
         creation_date: "21/10/2023",        
     },
     {
         id: "2",
-        storie_ID: "4",
+        storie_id: "2",
         user_id: "1",
-        rating: "4",
+        rating: "0",
         creation_date: "21/10/2023",  
     },
     {
         id: "3",
-        storie_ID: "4",
+        storie_id: "3",
         user_id: "1",
-        rating: "4",
+        rating: "2",
         creation_date: "21/10/2023",  
     },
     {
         id: "4",
-        storie_ID: "4",
+        storie_id: "4",
         user_id: "1",
-        rating: "4",
+        rating: "5",
         creation_date: "21/10/2023", 
     },
 ];
@@ -40,8 +40,8 @@ export const RatingProvider = ({children}) =>{
     const [rating,setRating] = useState(TempRatings);
     const value = {rating, setRating};
     return(
-        <UserContext.Provider value={value}>
+        <RatingContext.Provider value={value}>
             {children}
-        </UserContext.Provider>
+        </RatingContext.Provider>
     )
 }

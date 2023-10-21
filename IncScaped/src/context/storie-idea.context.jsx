@@ -30,8 +30,8 @@ export const IdeaProvider = ({children}) =>{
     const [idea,setIdea] = useState(TempIdeas);
     const value = {idea, setIdea};
     return(
-        <UserContext.Provider value={value}>
+        <IdeaContext.Provider value={value}>
             {children}
-        </UserContext.Provider>
+        </IdeaContext.Provider>
     )
 }
