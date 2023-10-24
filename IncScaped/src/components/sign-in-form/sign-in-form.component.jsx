@@ -3,20 +3,29 @@ import { useState} from 'react'
 import FormInput from '../form-input/form-input.component';
 import "./sign-in-form.styles.scss"
 import Button from '../button/button.component';
+import { UserContext } from '../../context/user.context';
+import { useContext } from 'react';
+import axiosClient from '../../axios';
 const defaultFormFields = {
     email:'',
     password:'',
 }
 
 export default function SignInForm() {
+    const {setUserToken,setCurrentUser} = useContext(UserContext);
     const [formFields,setFormFields]=useState(defaultFormFields);
     const {email,password} = formFields;
     
-
     const handleSubmit = async (event) =>{
-        event.preventDefault();        
-        console.log(event);
-        
+        event.preventDefault(); 
+        axiosClient.post('/login', formFields)
+        .then(({data})=>{
+            setCurrentUser(data.user);
+            setUserToken(data.token);
+        })
+        .catch((error)=>{
+            console.log(error);
+        });        
     }
     const handleChanges = (event) =>{
         const {name,value} = event.target;

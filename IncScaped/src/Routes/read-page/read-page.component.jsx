@@ -22,10 +22,10 @@ export default function ReadPageComponent() {
   return (
     <div className="storie-container">
       <div className="storie-content">
-        <p>{author.username} {storie.creation_date}</p>
+        <p>{author.username} {storie.story_date}</p>
         <p>Rating: {ratingValue.rating}</p>
         <h1>{storie.title}</h1>
-        <div>{storie.storie_text}</div> 
+        <div>{storie.content}</div> 
       </div>
       {comments&&(<ComentListComponent comments={comments}/>)}
     </div>

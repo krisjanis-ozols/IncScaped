@@ -13,7 +13,7 @@ export default function StorieComponent({storie}) {
     return (
         <Link className='storie-body-container' to={`/story/${storie.id}`}>
             <div className="storie-details">
-                <p>{storie.creation_date} Author: {user.username}</p>
+                <p>{storie.story_date} Author: {user.username}</p>
                 <p>Rating: {rait.rating}</p>
                 <p>Title: {storie.title}</p>
                 <p>Fragment: {storie.fragment}</p>                
