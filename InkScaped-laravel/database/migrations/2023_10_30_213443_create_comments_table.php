@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dalyprompts', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('admin_id');
-            $table->text('prompt_text');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('stories_id')->constrained('stories')->onDelete('cascade');
+            $table->text('comment_text');
             $table->timestamps();
-            $table->foreign('admin_id')->references('id')->on('users');
-        });        
+        });
     }
 
     /**
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('dalyprompts');
+        Schema::dropIfExists('comments');
     }
 };
