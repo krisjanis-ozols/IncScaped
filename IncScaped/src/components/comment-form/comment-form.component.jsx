@@ -10,17 +10,18 @@ import StarRating from '../star-rating/star-rating.component';
 
 const defaultFormFields = {
     
-    commentText:'',
+    comment_text:'',
+    rating:1,
 }
 
 
 export default function CommentForm() {
-    const [rating, setRating] = useState(1);
-    const {setUserToken,setCurrentUser} = useContext(UserContext);
+    const [rating2, setRating] = useState(1);
     const [formFields,setFormFields]=useState(defaultFormFields);
-    const {commentText} = formFields;
+    const {comment_text, rating} = formFields;
     const handleRatingChange = (newRating) => {
         setRating(newRating);
+        setFormFields({ ...formFields, rating: newRating });
       };
     
     const handleSubmit = async (event) =>{
@@ -28,15 +29,15 @@ export default function CommentForm() {
         //userId //StiriesId //Commetn text, Rating
         //comment
         console.log(formFields);
-        console.log(rating);
-        axiosClient.post('/comment', formFields)
-        //
-        .then(({data})=>{
-            //jāpievieno datu nodošana
-        })
-        .catch((error)=>{
-            console.log(error);
-        });        
+        console.log('Rating:', formFields.rating);
+        // axiosClient.post('/comment', formFields)
+        // //
+        // .then(({data})=>{
+        //     //jāpievieno datu nodošana
+        // })
+        // .catch((error)=>{
+        //     console.log(error);
+        // });        
     }
     const handleChanges = (event) =>{
         const {name,value} = event.target;
@@ -65,8 +66,8 @@ export default function CommentForm() {
             <textarea
             className='Comment'
             id="Comment"
-            name="commentText"
-            value={commentText}
+            name="comment_text"
+            value={comment_text}
             onChange={handleChanges}
             onKeyDown={handleKeyDown}
             required
