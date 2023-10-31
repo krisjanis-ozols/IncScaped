@@ -6,6 +6,7 @@ import { UserContext } from '../../context/user.context';
 import { RatingContext } from '../../context/rating.context';
 import { ComentContext } from '../../context/coment.context';
 import ComentListComponent from '../../components/coment-list/coment-list.component';
+import CommentForm from '../../components/comment-form/comment-form.component';
 import './read-page.styles.scss'
 
 export default function ReadPageComponent() {
@@ -20,7 +21,12 @@ export default function ReadPageComponent() {
   const comments = coments.filter(coment => coment.storie_id === id);
 
   return (
+
     <div className="storie-container">
+      <div>
+        <CommentForm/>
+      </div>
+
       <div className="storie-content">
         <p>{author.username} {storie.story_date}</p>
         <p>Rating: {ratingValue.rating}</p>
