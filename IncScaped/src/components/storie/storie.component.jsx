@@ -1,22 +1,16 @@
 import React from 'react'
 import './storie.styles.scss'
-import { UserContext } from '../../context/user.context';
-import { useContext } from 'react';
-import { RatingContext } from '../../context/rating.context';
 import { Link } from 'react-router-dom';
 
 export default function StorieComponent({storie}) {
-    const { allUsers} = useContext(UserContext);    
-    const {rating} = useContext(RatingContext)    
-    const user = allUsers.find(user => user.id === storie.user_id);
-    const rait = rating.find(rait => rait.id === storie.user_id)
+    const fragment = storie.content.substring(0, 100);
     return (
         <Link className='storie-body-container' to={`/story/${storie.id}`}>
             <div className="storie-details">
-                <p>{storie.story_date} Author: {user.username}</p>
-                <p>Rating: {rait.rating}</p>
+                <p>{storie.created_at} Author: {storie.author}</p>
+                <p>Rating: {storie.rating}</p>
                 <p>Title: {storie.title}</p>
-                <p>Fragment: {storie.fragment}</p>                
+                <p>Fragment: {fragment}</p>                
             </div>
         </Link>
     )
